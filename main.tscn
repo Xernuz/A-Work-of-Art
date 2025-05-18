@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxnaj8vte2sbf"]
+[gd_scene load_steps=5 format=3 uid="uid://bxnaj8vte2sbf"]
 
 [ext_resource type="PackedScene" uid="uid://b2wec0vcyqnhc" path="res://player.tscn" id="1_kovux"]
+[ext_resource type="Texture2D" uid="uid://i81tnju53np" path="res://images/painted world sprite sheet.png" id="2_nth1m"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_0gfo2"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hefco"]
+texture = ExtResource("2_nth1m")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sfx8j"]
-size = Vector2(622, 167.343)
+[sub_resource type="TileSet" id="TileSet_jajx6"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_hefco")
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(1, 0.991462)
@@ -13,16 +26,9 @@ scale = Vector2(1, 0.991462)
 [node name="player" parent="." instance=ExtResource("1_kovux")]
 position = Vector2(572, 387)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(611, 517.922)
-scale = Vector2(620, 166.421)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
-position = Vector2(0, -2.38419e-07)
-scale = Vector2(1, 1)
-mesh = SubResource("QuadMesh_0gfo2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 0.00328851)
-scale = Vector2(0.0016129, 0.00600886)
-shape = SubResource("RectangleShape2D_sfx8j")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_jajx6")
+rendering_quadrant_size = 32
+format = 2
+layer_0/name = "Level"
+layer_0/tile_data = PackedInt32Array(983050, 1, 0, 983051, 1, 0, 983052, 1, 0, 983053, 1, 0, 983054, 1, 0, 983055, 1, 0, 983056, 1, 0, 983057, 1, 0, 983058, 1, 0, 983059, 1, 0, 983060, 1, 0, 983061, 1, 0, 983062, 1, 0, 983063, 1, 0, 983064, 1, 0, 983065, 1, 0, 983066, 1, 0, 983067, 1, 0, 983068, 1, 0, 983069, 1, 0)
