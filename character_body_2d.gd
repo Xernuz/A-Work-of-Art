@@ -1,25 +1,50 @@
 extends CharacterBody2D
 
+@export var walk_speed = 400.0
+@export var run_speed = 600.0
+@export_range(0, 1) var acceleration = 0.1
+@export_range(0, 1) var deceleration = 0.1
+@export var jump_force = -800.0
+@export_range(0, 1) var decelerate_on_jump_release = 0.5
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+var is_crouching = false
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * 1.5 * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = jump_force
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+	if Input.is_action_just_released("jump") and velocity.y < 0:
+		velocity.y *= decelerate_on_jump_release
+	var speed
+	if Input.is_action_pressed("run"):
+		speed = run_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		speed = walk_speed
+
+	var direction := Input.get_axis("left", "right")
+	if direction:
+		velocity.x = move_toward(velocity.x, direction * speed, speed * acceleration)
+	else:
+		velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
+		
+	if Input.is_action_just_pressed("crouch"):
+		crouch()
+	elif Input.is_action_just_released("crouch"):
+		stand()
+
 
 	move_and_slide()
+
+
+func crouch():
+	if is_crouching:
+		return
+	is_crouching = true
+func stand():
+	if is_crouching == false:
+		return
+	is_crouching = false

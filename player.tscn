@@ -1,17 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmf7o5m8y1j0v"]
+[gd_scene load_steps=4 format=3 uid="uid://b2wec0vcyqnhc"]
 
-[ext_resource type="Script" path="res://scenes/scripts/player.gd" id="1_gi1o8"]
-[ext_resource type="Texture2D" uid="uid://dgsfq6dfyrxe6" path="res://gosling.png" id="2_4f1pd"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="1_01y2f"]
+[ext_resource type="Texture2D" uid="uid://3nmttpunad0n" path="res://icon.svg" id="2_u4x08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcqkn"]
-size = Vector2(85, 125)
+size = Vector2(126, 125)
 
 [node name="player" type="CharacterBody2D"]
-script = ExtResource("1_gi1o8")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, -64.5)
-shape = SubResource("RectangleShape2D_bcqkn")
+script = ExtResource("1_01y2f")
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
 wait_time = 0.3
@@ -20,7 +16,10 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(3, -61)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.5, -64.4063)
-scale = Vector2(0.128788, 0.285165)
-texture = ExtResource("2_4f1pd")
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(1, -65)
+texture = ExtResource("2_u4x08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -64.5)
+shape = SubResource("RectangleShape2D_bcqkn")
