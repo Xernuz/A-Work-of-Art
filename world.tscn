@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ts400we1sy4d"]
+
+[ext_resource type="PackedScene" uid="uid://bmf7o5m8y1j0v" path="res://scenes/player.tscn" id="1_bwrht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75yn4"]
+size = Vector2(1168, 20)
+
+[sub_resource type="QuadMesh" id="QuadMesh_t2545"]
+
+[node name="World" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_bwrht")]
+
+[node name="block" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="block"]
+position = Vector2(8, 24)
+shape = SubResource("RectangleShape2D_75yn4")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="block"]
+position = Vector2(4, 23.875)
+scale = Vector2(1128, 16.25)
+mesh = SubResource("QuadMesh_t2545")
