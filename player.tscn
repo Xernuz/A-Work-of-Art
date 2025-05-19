@@ -2,16 +2,10 @@
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_01y2f"]
 [ext_resource type="Texture2D" uid="uid://x7ilqjut1o0y" path="res://images/placeholder.png" id="2_wrpd0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcqkn"]
-size = Vector2(28, 73)
+[ext_resource type="Shape2D" uid="uid://d24qh0magk3p4" path="res://resources/standing_cshape.tres" id="3_0bnxk"]
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_01y2f")
-
-[node name="JumpBufferTimer" type="Timer" parent="."]
-wait_time = 0.3
-one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(42, -28)
@@ -22,5 +16,24 @@ scale = Vector2(0.838542, 0.895833)
 texture = ExtResource("2_wrpd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(67, 9.5)
-shape = SubResource("RectangleShape2D_bcqkn")
+position = Vector2(67, 9.9375)
+shape = ExtResource("3_0bnxk")
+
+[node name="RayCast2D_1" type="RayCast2D" parent="."]
+position = Vector2(56, 44)
+target_position = Vector2(0, -70)
+
+[node name="RayCast2D_2" type="RayCast2D" parent="."]
+position = Vector2(78, 44)
+target_position = Vector2(0, -70)
+
+[node name="JumpBufferTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
