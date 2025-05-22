@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2wec0vcyqnhc"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_01y2f"]
-[ext_resource type="Texture2D" uid="uid://x7ilqjut1o0y" path="res://images/placeholder.png" id="2_wrpd0"]
+[ext_resource type="Texture2D" uid="uid://ci2yevwxlp1pk" path="res://adolfje.png" id="2_of8rq"]
 [ext_resource type="Shape2D" uid="uid://d24qh0magk3p4" path="res://resources/standing_cshape.tres" id="3_0bnxk"]
 
 [node name="player" type="CharacterBody2D"]
@@ -11,28 +11,28 @@ script = ExtResource("1_01y2f")
 position = Vector2(42, -28)
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(68.25, 3)
-scale = Vector2(0.838542, 0.895833)
-texture = ExtResource("2_wrpd0")
+position = Vector2(70, 10)
+scale = Vector2(2.09375, 2.193)
+texture = ExtResource("2_of8rq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(67, 9.9375)
 shape = ExtResource("3_0bnxk")
 
 [node name="RayCast2D_1" type="RayCast2D" parent="."]
-position = Vector2(56, 44)
+position = Vector2(57, 45)
 target_position = Vector2(0, -70)
 
 [node name="RayCast2D_2" type="RayCast2D" parent="."]
-position = Vector2(78, 44)
+position = Vector2(77, 45)
 target_position = Vector2(0, -70)
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
