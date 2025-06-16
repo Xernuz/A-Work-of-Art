@@ -5,6 +5,7 @@
 [ext_resource type="Shape2D" uid="uid://d24qh0magk3p4" path="res://resources/standing_cshape.tres" id="3_0bnxk"]
 
 [node name="player" type="CharacterBody2D"]
+top_level = true
 script = ExtResource("1_01y2f")
 
 [node name="Camera2D" type="Camera2D" parent="."]

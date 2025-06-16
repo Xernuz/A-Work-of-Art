@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-@export var walk_speed := 400.0
-@export var run_speed := 600.0
+@export var walk_speed := 200.0
+@export var run_speed := 400.0
 @export_range(0, 1) var acceleration := 0.1
 @export_range(0, 1) var deceleration := 0.1
 @export var jump_force := -800.0
 @export_range(0, 1) var decelerate_on_jump_release := 0.5
-@export var dash_speed := 1000.0
-@export var dash_duration := 0.2
+@export var dash_speed := 1200.0
+@export var dash_duration := 0.15
 
 @onready var icon := $Icon
 @onready var cshape := $CollisionShape2D
@@ -24,24 +24,23 @@ var jump_buffered := false
 var can_coyote_jump := false
 var last_direction := 1.0
 var is_dashing := false
+var can_dash := false # Added: dash availability flag
 
 var standing_cshape = preload("res://resources/standing_cshape.tres")
 var crouching_cshape = preload("res://resources/crouching_cshape.tres")
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * 1.5 * delta
+	if is_dashing:
+		velocity.y = 0
+	else:
+		if not is_on_floor():
+			velocity += get_gravity() * 1.5 * delta
 
-	if Input.is_action_just_pressed("jump"):
-		jump()
-	elif Input.is_action_just_released("jump") and velocity.y < 0:
-		velocity.y *= decelerate_on_jump_release
+		if Input.is_action_just_pressed("jump"):
+			jump()
+		elif Input.is_action_just_released("jump") and velocity.y < 0:
+			velocity.y *= decelerate_on_jump_release
 
-	if Input.is_action_just_pressed("dash") and not is_dashing:
-		start_dash()
-		is_dashing = false
-
-	if not is_dashing:
 		crouch_intent = Input.is_action_pressed("crouch")
 		var direction := Input.get_axis("left", "right")
 
@@ -51,11 +50,15 @@ func _physics_process(delta: float) -> void:
 			icon.flip_h = direction < 0
 			icon.position.x = 64 if direction < 0 else 70
 			if is_crouching:
-				update_crouch_rotation()	
+				update_crouch_rotation()
 		else:
 			velocity.x = move_toward(velocity.x, 0, walk_speed * deceleration)
 
 		update_crouch_state()
+
+	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
+		start_dash()
+		can_dash = false
 
 	var was_on_floor = is_on_floor()
 	move_and_slide()
@@ -83,10 +86,12 @@ func jump():
 func start_dash():
 	is_dashing = true
 	velocity.x = dash_speed * last_direction
-	dash_timer.start()
+	velocity.y = 0
+	dash_timer.start(dash_duration)
 
 func _on_dash_timer_timeout():
 	is_dashing = false
+	velocity.x = 0
 
 func _on_coyote_timer_timeout():
 	can_coyote_jump = false
@@ -99,14 +104,13 @@ func is_clear_above() -> bool:
 
 func update_crouch_state():
 	var crouch_needed = crouch_intent or not is_clear_above()
-
 	if crouch_needed and not is_crouching:
 		enter_crouch()
 	elif not crouch_needed and is_crouching:
 		exit_crouch()
-	
+
 func update_crouch_rotation():
-	var sprinting_crouch = was_sprinting and abs(velocity.x) > 0
+	var _sprinting_crouch = was_sprinting and abs(velocity.x) > 0
 	if last_direction < 0:
 		icon.rotation_degrees = -90 if not was_sprinting else 90
 		icon.position.x = 64
@@ -131,3 +135,8 @@ func exit_crouch():
 	icon.rotation_degrees = 0
 	icon.position.y = 16
 	icon.position.x = 64 if last_direction < 0 else 70
+
+# Call this when player picks up dash item
+func grant_dash():
+	print("Dash Granted")
+	can_dash = true
