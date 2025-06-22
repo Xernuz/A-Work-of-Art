@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxnaj8vte2sbf"]
+[gd_scene load_steps=6 format=3 uid="uid://bxnaj8vte2sbf"]
 
 [ext_resource type="PackedScene" uid="uid://b2wec0vcyqnhc" path="res://player.tscn" id="1_kovux"]
 [ext_resource type="Texture2D" uid="uid://i81tnju53np" path="res://images/painted world sprite sheet.png" id="2_nth1m"]
+[ext_resource type="Texture2D" uid="uid://chm675er4uvow" path="res://images/background.png" id="3_3yu2e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hefco"]
 texture = ExtResource("2_nth1m")
@@ -27,7 +28,20 @@ scale = Vector2(1, 0.991462)
 position = Vector2(-63, -189)
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = 1
 tile_set = SubResource("TileSet_jajx6")
 rendering_quadrant_size = 32
 format = 2
 layer_0/name = "Level"
+layer_0/tile_data = PackedInt32Array(65527, 1, 0, 65528, 1, 0, 65529, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 360)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-643, -535)
+scale = Vector2(2, 2)
+texture = ExtResource("3_3yu2e")
+centered = false
