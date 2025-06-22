@@ -24,7 +24,7 @@ sources/1 = SubResource("TileSetAtlasSource_hefco")
 scale = Vector2(1, 0.991462)
 
 [node name="player" parent="." instance=ExtResource("1_kovux")]
-position = Vector2(583, 391.341)
+position = Vector2(-63, -189)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jajx6")
