@@ -21,6 +21,10 @@ window/size/viewport_width=683
 window/size/viewport_height=384
 window/stretch/mode="viewport"
 
+[editor]
+
+version_control/default_filters/use_nearest_mipmap_filter=false
+
 [input]
 
 jump={

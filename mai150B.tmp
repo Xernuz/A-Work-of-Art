@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxnaj8vte2sbf"]
+[gd_scene load_steps=10 format=3 uid="uid://bxnaj8vte2sbf"]
 
 [ext_resource type="PackedScene" uid="uid://b2wec0vcyqnhc" path="res://player.tscn" id="1_kovux"]
 [ext_resource type="Script" path="res://main.gd" id="1_y5spe"]
 [ext_resource type="Texture2D" uid="uid://i81tnju53np" path="res://images/painted world sprite sheet.png" id="2_nth1m"]
 [ext_resource type="Texture2D" uid="uid://chm675er4uvow" path="res://images/background.png" id="3_3yu2e"]
 [ext_resource type="Script" path="res://room_1.gd" id="5_2sfxi"]
-[ext_resource type="Script" path="res://room_2.gd" id="6_ndmos"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hefco"]
 texture = ExtResource("2_nth1m")
@@ -25,17 +24,14 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_hefco")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5gdr"]
-size = Vector2(576, 575.37)
+size = Vector2(544, 575.37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnpy3"]
-size = Vector2(544, 287.454)
+size = Vector2(352, 287.454)
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(1, 0.991462)
 script = ExtResource("1_y5spe")
-
-[node name="player" parent="." instance=ExtResource("1_kovux")]
-position = Vector2(405, -511)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
@@ -43,7 +39,7 @@ tile_set = SubResource("TileSet_jajx6")
 rendering_quadrant_size = 32
 format = 2
 layer_0/name = "Level"
-layer_0/tile_data = PackedInt32Array(-65536, 1, 1, -131072, 1, 1, -196608, 1, 1, -262144, 1, 1, -393216, 1, 1, -458752, 1, 1, -524288, 1, 1, -327680, 1, 1, -589824, 1, 1, -655360, 1, 1, -720896, 1, 1, -786432, 1, 1, -851968, 1, 1, -917504, 1, 1, -983040, 1, 1, -1048576, 1, 1, -1114112, 1, 1, -1179648, 1, 1, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -1179634, 1, 1, -1179635, 1, 1, -1179636, 1, 1, -1179637, 1, 1, -1179638, 1, 1, -1179639, 1, 1, -1179640, 1, 1, -1179641, 1, 1, -1179642, 1, 1, -1179643, 1, 1, -1179644, 1, 1, -1179645, 1, 1, -1179646, 1, 1, -1179647, 1, 1, -65521, 1, 0, -65520, 1, 0, -65519, 1, 1, -131055, 1, 1, -196591, 1, 1, -262127, 1, 1, -327663, 1, 1, -393199, 1, 1, -458735, 1, 1, -524271, 1, 1, -589807, 1, 1, -655343, 1, 1, -720879, 1, 1, -786415, 1, 1, -851951, 1, 1, -917487, 1, 0, -1179631, 1, 1, -1179632, 1, 1, -1179633, 1, 1, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -458739, 1, 0, -458738, 1, 0, -458737, 1, 0, -458746, 1, 0, -458747, 1, 0, -458748, 1, 0, -655352, 1, 0, -655351, 1, 0, -655350, 1, 0, -917488, 1, 0, -917489, 1, 0, -917490, 1, 0, -917491, 1, 0, -1245167, 1, 1, -1310703, 1, 1, -1376239, 1, 1, -1441775, 1, 1, -917486, 1, 0, -917484, 1, 0, -917483, 1, 0, -917482, 1, 0, -917481, 1, 0, -917480, 1, 0, -917479, 1, 0, -917478, 1, 0, -917477, 1, 0, -1441774, 1, 1, -1441773, 1, 1, -1441772, 1, 1, -1441771, 1, 1, -1441770, 1, 1, -1441769, 1, 1, -1441768, 1, 1, -1441767, 1, 1, -1441766, 1, 1, -1441765, 1, 1, -917476, 1, 0, -917475, 1, 0, -917474, 1, 0, -917473, 1, 0, -917471, 1, 0, -917472, 1, 0, -917470, 1, 0, -1441764, 1, 1, -1441763, 1, 1, -1441762, 1, 1, -1441761, 1, 1, -1441760, 1, 1, -1441759, 1, 1, -1441758, 1, 1, -1376222, 1, 1, -1310686, 1, 1, -1245150, 1, 1, -1179614, 1, 1, -917485, 1, 0)
+layer_0/tile_data = PackedInt32Array(-65536, 1, 1, -131072, 1, 1, -196608, 1, 1, -262144, 1, 1, -393216, 1, 1, -458752, 1, 1, -524288, 1, 1, -327680, 1, 1, -589824, 1, 1, -655360, 1, 1, -720896, 1, 1, -786432, 1, 1, -851968, 1, 1, -917504, 1, 1, -983040, 1, 1, -1048576, 1, 1, -1114112, 1, 1, -1179648, 1, 1, -65535, 1, 0, -65534, 1, 0, -65533, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -65528, 1, 0, -65527, 1, 0, -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -1179634, 1, 1, -1179635, 1, 1, -1179636, 1, 1, -1179637, 1, 1, -1179638, 1, 1, -1179639, 1, 1, -1179640, 1, 1, -1179641, 1, 1, -1179642, 1, 1, -1179643, 1, 1, -1179644, 1, 1, -1179645, 1, 1, -1179646, 1, 1, -1179647, 1, 1, -65521, 1, 0, -65520, 1, 0, -65519, 1, 1, -131055, 1, 1, -196591, 1, 1, -262127, 1, 1, -327663, 1, 1, -393199, 1, 1, -458735, 1, 1, -524271, 1, 1, -589807, 1, 1, -655343, 1, 1, -720879, 1, 1, -786415, 1, 1, -851951, 1, 1, -917487, 1, 0, -1179631, 1, 1, -1179632, 1, 1, -1179633, 1, 1, -262136, 1, 0, -262135, 1, 0, -262134, 1, 0, -458739, 1, 0, -458738, 1, 0, -458737, 1, 0, -458746, 1, 0, -458747, 1, 0, -458748, 1, 0, -655352, 1, 0, -655351, 1, 0, -655350, 1, 0, -917488, 1, 0, -917489, 1, 0, -917490, 1, 0, -917491, 1, 0, -1245167, 1, 1, -1310703, 1, 1, -1376239, 1, 1, -1441775, 1, 1, -917486, 1, 0, -917484, 1, 0, -917483, 1, 0, -917482, 1, 0, -917481, 1, 0, -917480, 1, 0, -917479, 1, 0, -917478, 1, 0, -917477, 1, 0, -1441774, 1, 1, -1441773, 1, 1, -1441772, 1, 1, -1441771, 1, 1, -1441770, 1, 1, -1441769, 1, 1, -1441768, 1, 1, -1441767, 1, 1, -1441766, 1, 1, -1441765, 1, 1, -1179621, 1, 1, -1245157, 1, 1, -1310693, 1, 1, -1376229, 1, 1, -851949, 1, 0)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2(1, 1)
@@ -59,16 +55,20 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_3yu2e")
 centered = false
 
+[node name="player" parent="." instance=ExtResource("1_kovux")]
+position = Vector2(44, -63)
+
 [node name="room1" type="Area2D" parent="."]
 script = ExtResource("5_2sfxi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room1"]
-position = Vector2(288, -288.232)
+position = Vector2(272, -288.232)
 shape = SubResource("RectangleShape2D_m5gdr")
 
 [node name="room2" type="Area2D" parent="."]
-script = ExtResource("6_ndmos")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room2"]
-position = Vector2(848, -560.285)
+position = Vector2(720, -560.284)
 shape = SubResource("RectangleShape2D_lnpy3")
+
+[connection signal="body_entered" from="room1" to="room1" method="_on_body_entered"]

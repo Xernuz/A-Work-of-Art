@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2wec0vcyqnhc"]
+[gd_scene load_steps=5 format=3 uid="uid://b2wec0vcyqnhc"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_01y2f"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_bbqpj"]
 [ext_resource type="Texture2D" uid="uid://ci2yevwxlp1pk" path="res://adolfje.png" id="2_of8rq"]
 [ext_resource type="Shape2D" uid="uid://d24qh0magk3p4" path="res://resources/standing_cshape.tres" id="3_0bnxk"]
 
@@ -9,8 +10,11 @@ top_level = true
 script = ExtResource("1_01y2f")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(66, 15)
+position = Vector2(67, 24)
 zoom = Vector2(1.2, 1.2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+script = ExtResource("2_bbqpj")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(70, 16)
