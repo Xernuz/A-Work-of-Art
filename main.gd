@@ -2,7 +2,8 @@ extends Node2D
 
 var room_bounds = {
 	"room1": Rect2(Vector2(10, -571), Vector2(565, 571)),
-	"room2": Rect2(Vector2(555, -697), Vector2(565, 270)),
+	"room2": Rect2(Vector2(555, -697), Vector2(565, 697)),
+	"room3": Rect2(Vector2(1120, -697), Vector2(974, 697)),
 }
 
 func _ready():

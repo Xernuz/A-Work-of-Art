@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b17c72op62vgo"]
+
+[ext_resource type="Script" path="res://rope.gd" id="1_o5dys"]
+[ext_resource type="Texture2D" uid="uid://dks7y3kay6p4s" path="res://images/endrope.png" id="2_en3x5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpay5"]
+size = Vector2(5.42281, 33.3196)
+
+[node name="Rope" type="Node2D"]
+script = ExtResource("1_o5dys")
+
+[node name="Ladder" type="Sprite2D" parent="."]
+texture = ExtResource("2_en3x5")
+
+[node name="ClimbArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea"]
+position = Vector2(4.47035e-08, 4.76837e-07)
+rotation = 3.14159
+scale = Vector2(0.368812, -0.960396)
+shape = SubResource("RectangleShape2D_bpay5")
+
+[connection signal="body_entered" from="ClimbArea" to="ClimbArea" method="_on_body_entered"]
+[connection signal="body_exited" from="ClimbArea" to="ClimbArea" method="_on_body_exited"]

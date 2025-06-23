@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export_range(0, 1) var decelerate_on_jump_release := 0.5
 @export var dash_speed := 1200.0
 @export var dash_duration := 0.15
+@export var climbing = false
 
 @onready var icon := $Icon
 @onready var cshape := $CollisionShape2D
@@ -24,12 +25,30 @@ var jump_buffered := false
 var can_coyote_jump := false
 var last_direction := 1.0
 var is_dashing := false
-var can_dash := false # Added: dash availability flag
+var can_dash := false 
 
 var standing_cshape = preload("res://resources/standing_cshape.tres")
 var crouching_cshape = preload("res://resources/crouching_cshape.tres")
 
 func _physics_process(delta: float) -> void:
+	if climbing and Input.is_action_pressed("climb"):
+		velocity.y = 0  # Cancel vertical velocity (gravity)
+		
+		# Move up/down with input
+		if Input.is_action_pressed("up"):
+			velocity.y = -walk_speed
+		elif Input.is_action_pressed("crouch"):
+			velocity.y = walk_speed
+		else:
+			velocity.y = 0
+		
+		# Optional: allow small horizontal movement on rope
+		var horizontal_input = Input.get_axis("left", "right")
+		velocity.x = horizontal_input * walk_speed * 0.5  # slower side movement
+		
+		move_and_slide()
+		return
+		
 	if is_dashing:
 		velocity.y = 0
 	else:
@@ -140,3 +159,10 @@ func exit_crouch():
 func grant_dash():
 	print("Dash Granted")
 	can_dash = true
+	
+func start_climbing():
+	climbing = true
+	velocity = Vector2.ZERO
+
+func stop_climbing():
+	climbing = false
