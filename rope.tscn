@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dks7y3kay6p4s" path="res://images/endrope.png" id="2_en3x5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bpay5"]
-size = Vector2(5.42281, 33.3196)
+size = Vector2(5.42281, 133.278)
 
 [node name="Rope" type="Node2D"]
 script = ExtResource("1_o5dys")
@@ -12,10 +12,23 @@ script = ExtResource("1_o5dys")
 [node name="Ladder" type="Sprite2D" parent="."]
 texture = ExtResource("2_en3x5")
 
+[node name="Ladder2" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_en3x5")
+
+[node name="Ladder3" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("2_en3x5")
+
+[node name="Ladder4" type="Sprite2D" parent="."]
+position = Vector2(0, -96)
+texture = ExtResource("2_en3x5")
+
 [node name="ClimbArea" type="Area2D" parent="."]
+position = Vector2(9, -27)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea"]
-position = Vector2(4.47035e-08, 4.76837e-07)
+position = Vector2(-9.00012, -21)
 rotation = 3.14159
 scale = Vector2(0.368812, -0.960396)
 shape = SubResource("RectangleShape2D_bpay5")

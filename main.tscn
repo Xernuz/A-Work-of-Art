@@ -96,25 +96,8 @@ position = Vector2(584, -80)
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
-[node name="Rope2" parent="CanvasGroup" instance=ExtResource("9_ptvpg")]
-position = Vector2(688, -419.582)
-scale = Vector2(2, 2)
-
-[node name="Rope3" parent="CanvasGroup" instance=ExtResource("9_ptvpg")]
-position = Vector2(688, -355.031)
-scale = Vector2(2, 2)
-
-[node name="Rope4" parent="CanvasGroup" instance=ExtResource("9_ptvpg")]
-position = Vector2(688, -290.48)
-scale = Vector2(2, 2)
-
 [node name="Rope5" parent="CanvasGroup" instance=ExtResource("9_ptvpg")]
 position = Vector2(688, -225.929)
-scale = Vector2(2, 2)
-
-[node name="Rope" parent="CanvasGroup" instance=ExtResource("9_ptvpg")]
-visible = false
-position = Vector2(688, -484.134)
 scale = Vector2(2, 2)
 
 [node name="dash paint" parent="." instance=ExtResource("10_r24lq")]
