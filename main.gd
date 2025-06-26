@@ -15,3 +15,17 @@ func set_camera_limits_for_room(room_name: String) -> void:
 		var cam = get_node("player/Camera2D")
 		if cam:
 			cam.set_camera_limits(rect)
+
+var spawn_points := {
+	"spawn1": Vector2(1216, -512)
+}  # Dictionary of spawn points: {"screen_name": Vector2}
+
+func get_current_room(pos: Vector2) -> String:
+	for room_name in room_bounds.keys():
+		if room_bounds[room_name].has_point(pos):
+			return room_name
+	return ""
+
+func get_respawn_position(pos: Vector2) -> Vector2:
+	var room = get_current_room(pos)
+	return spawn_points.get(room, Vector2.ZERO)

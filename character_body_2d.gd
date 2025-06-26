@@ -33,7 +33,7 @@ var crouching_cshape = preload("res://resources/crouching_cshape.tres")
 func _physics_process(delta: float) -> void:
 	if climbing and Input.is_action_pressed("climb"):
 		velocity.y = 0  # Cancel vertical velocity (gravity)
-		
+
 		# Move up/down with input
 		if Input.is_action_pressed("up"):
 			velocity.y = -walk_speed
@@ -41,11 +41,16 @@ func _physics_process(delta: float) -> void:
 			velocity.y = walk_speed
 		else:
 			velocity.y = 0
-		
+
 		# Optional: allow small horizontal movement on rope
 		var horizontal_input = Input.get_axis("left", "right")
 		velocity.x = horizontal_input * walk_speed * 0.5  # slower side movement
-		
+
+		# Jump off the rope
+		if Input.is_action_just_pressed("jump"):
+			climbing = false  # Exit climbing state
+			velocity.y = jump_force  # Apply jump force upward
+
 		move_and_slide()
 		return
 		
