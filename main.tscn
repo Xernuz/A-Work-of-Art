@@ -92,7 +92,7 @@ shape = SubResource("RectangleShape2D_16ng7")
 position = Vector2(1568, -435.72)
 
 [node name="player" parent="." instance=ExtResource("1_kovux")]
-position = Vector2(584, -80)
+position = Vector2(112, -88)
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
