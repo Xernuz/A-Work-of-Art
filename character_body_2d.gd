@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var walk_speed := 200.0
-@export var run_speed := 400.0
+@export var run_speed := 350.0
 @export_range(0, 1) var acceleration := 0.1
 @export_range(0, 1) var deceleration := 0.1
 @export var jump_force := -800.0
@@ -171,3 +171,6 @@ func start_climbing():
 
 func stop_climbing():
 	climbing = false
+
+func _on_death_body_entered(body: Node2D) -> void:
+	body.global_position = Vector2(160, -90)

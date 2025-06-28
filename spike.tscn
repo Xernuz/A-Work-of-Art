@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://s0tkoim3mji1"]
+
+[ext_resource type="Texture2D" uid="uid://cgtcaxfwi5a24" path="res://images/spike.png" id="1_6wqxj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sj3s6"]
+size = Vector2(58, 13)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6wqxj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(32, 0)
+texture = ExtResource("1_6wqxj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Sprite2D"]
+position = Vector2(-16, 0)
+texture = ExtResource("1_6wqxj")
+
+[node name="KillArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+position = Vector2(16, 9.5)
+shape = SubResource("RectangleShape2D_sj3s6")

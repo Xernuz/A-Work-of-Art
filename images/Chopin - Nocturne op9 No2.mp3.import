@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://buwmyqpj41kn2"
+path="res://.godot/imported/Chopin - Nocturne op9 No2.mp3-d6683d0259d3af4178f1c3464b5b46fc.mp3str"
+
+[deps]
+
+source_file="res://images/Chopin - Nocturne op9 No2.mp3"
+dest_files=["res://.godot/imported/Chopin - Nocturne op9 No2.mp3-d6683d0259d3af4178f1c3464b5b46fc.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmjr408264ugc"]
+
+[ext_resource type="AudioStream" uid="uid://buwmyqpj41kn2" path="res://images/Chopin - Nocturne op9 No2.mp3" id="1_5gpfp"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_5gpfp")
+autoplay = true
